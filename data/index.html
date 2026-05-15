@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Lock</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="page">
+
+    <h1>STUDY LOCK</h1>
+
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('monitor')">Monitor</button>
+      <button class="tab" onclick="switchTab('remote')">Remote</button>
+    </div>
+
+    <div id="tab-monitor" class="tab-content">
+
+      <div class="block block-timer">
+        <div class="label" id="state-label">IDLE</div>
+        <div class="timer" id="countdown">__:__</div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="block block-unlocks">
+        <div class="unlocks-row">
+          <div class="unlock-item">
+            <div class="unlock-val" id="breaks-left">3</div>
+            <div class="unlock-lbl">breaks left</div>
+          </div>
+          <div class="divider"></div>
+          <div class="unlock-item">
+            <div class="unlock-val" id="breaks-used">0</div>
+            <div class="unlock-lbl">breaks used</div>
+          </div>
+          <div class="divider"></div>
+          <div class="unlock-item">
+            <div class="unlock-val" id="break-mins">0</div>
+            <div class="unlock-lbl">break mins</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block block-motivation">
+        <div class="quote" id="quote">Start a session from the esp32 deviece.</div>
+      </div>
+
+    </div>
+
+    <div id="tab-remote" class="tab-content hidden">
+
+      <div class="block" id="remote-input-block">
+        <div class="remote-label">START THE FOCUS TIME</div>
+        <div class="input-row">
+          <input
+            type="number"
+            id="remote-minutes"
+            class="time-input"
+            placeholder="25"
+            min="1"
+            max="180"
+          />
+          <span class="input-unit">min</span>
+        </div>
+        <button class="btn btn-start" onclick="remoteStart()">START SESSION</button>
+      </div>
+
+      <div class="block hidden" id="remote-active-block">
+        <div class="label" id="remote-state-label">FOCUSING</div>
+        <div class="timer" id="remote-countdown">__:__</div>
+        <div class="progress-track">
+          <div class="progress-fill" id="remote-progress"></div>
+        </div>
+      </div>
+
+      <div class="block hidden" id="remote-controls-block">
+
+        <div id="break-section">
+          <div class="remote-label" style="margin-bottom:12px">PUSH IT TO THE MAX! YOU CAN DO IT!</div>
+          <div class="input-row" style="margin-bottom:12px">
+            <input
+              type="number"
+              id="break-minutes"
+              class="time-input"
+              placeholder="5"
+              min="1"
+              max="30"
+            />
+            <span class="input-unit">min</span>
+          </div>
+          <button class="btn btn-break" id="break-btn" onclick="remoteBreak()">START BREAK</button>
+        </div>
+
+        <button class="btn btn-stop" onclick="remoteStop()" style="margin-top:12px">STOP SESSION</button>
+      </div>
+
+      <div id="remote-msg" class="remote-msg hidden"></div>
+
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

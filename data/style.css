@@ -1,0 +1,224 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #0a0a0a;
+  color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px;
+}
+
+.page {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+h1 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #555;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab.active {
+  background: #1e1e1e;
+  color: #f0f0f0;
+}
+
+.tab-content { display: flex; flex-direction: column; gap: 12px; }
+.hidden      { display: none !important; }
+
+.block {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.block-timer { padding: 36px 28px 28px; }
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #555;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.label.studying { color: #34d399; }
+.label.paused   { color: #fbbf24; }
+.label.done     { color: #60a5fa; }
+
+.timer {
+  font-size: 88px;
+  font-weight: 700;
+  letter-spacing: -4px;
+  color: #f0f0f0;
+  line-height: 1;
+  margin-bottom: 24px;
+  font-variant-numeric: tabular-nums;
+}
+.timer.paused { color: #fbbf24; }
+.timer.done   { color: #34d399; }
+
+.progress-track {
+  width: 100%;
+  height: 3px;
+  background: #222;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #f0f0f0;
+  border-radius: 2px;
+  transition: width 1s linear;
+}
+.progress-fill.paused { background: #fbbf24; }
+.progress-fill.done   { background: #34d399; }
+
+.block-unlocks { padding: 20px 28px; }
+.unlocks-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.unlock-item { flex: 1; text-align: center; }
+.unlock-val {
+  font-size: 28px;
+  font-weight: 700;
+  color: #f0f0f0;
+  line-height: 1;
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.unlock-lbl {
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.divider { width: 1px; height: 32px; background: #222; }
+
+.block-motivation {
+  padding: 24px 28px;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+}
+.quote {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  font-style: italic;
+  transition: opacity 0.5s ease;
+}
+.quote.hidden  { opacity: 0; }
+.quote.visible { opacity: 1; }
+
+.remote-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #555;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.time-input {
+  flex: 1;
+  background: #0a0a0a;
+  border: 1px solid #333;
+  border-radius: 10px;
+  color: #f0f0f0;
+  font-size: 32px;
+  font-weight: 700;
+  padding: 12px 16px;
+  outline: none;
+  font-variant-numeric: tabular-nums;
+  transition: border-color 0.2s;
+}
+.time-input:focus { border-color: #555; }
+.time-input::placeholder { color: #333; }
+
+.input-unit {
+  font-size: 14px;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+.btn {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 16px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn:hover   { opacity: 0.85; }
+.btn:active  { opacity: 0.7; }
+
+.btn-start { background: #f0f0f0; color: #0a0a0a; }
+.btn-break { background: #fbbf24; color: #0a0a0a; }
+.btn-stop  { background: #1e1e1e; color: #f87171; border: 1px solid #2a2a2a; }
+
+.remote-msg {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #1e1e1e;
+  color: #888;
+}
+.remote-msg.ok  { color: #34d399; }
+.remote-msg.err { color: #f87171; }
